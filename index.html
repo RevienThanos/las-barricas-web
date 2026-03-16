@@ -71,7 +71,10 @@
 
     .nav-links a:hover,
     .social a:hover,
-    .contact-card a:hover { color: var(--accent); }
+    .contact-card a:hover,
+    .menu-pdf-link:hover {
+      color: var(--accent);
+    }
 
     .hero {
       padding: 72px 0 40px;
@@ -86,7 +89,8 @@
 
     .hero-copy,
     .hero-card,
-    .section-card {
+    .menu-block,
+    .contact-card {
       background: rgba(255,255,255,.03);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -206,21 +210,54 @@
       max-width: 60ch;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .menu-intro {
+      margin-bottom: 22px;
     }
 
-    .section-card {
+    .menu-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .menu-pdf-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .menu-pdf-link:hover {
+      border-color: var(--accent);
+    }
+
+    .menu-grid {
+      column-count: 2;
+      column-gap: 18px;
+    }
+
+    .menu-block {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 18px;
       padding: 22px;
+      vertical-align: top;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
     }
 
-    .section-card p,
-    .section-card li,
-    .contact-card p {
-      color: var(--muted);
-      margin: 0;
+    .menu-block h3 {
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-size: 1.15rem;
     }
 
     .menu-list {
@@ -234,9 +271,27 @@
     .menu-list li {
       display: flex;
       justify-content: space-between;
+      align-items: start;
       gap: 16px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
+    }
+
+    .menu-list li span {
+      color: var(--text);
+      display: block;
+    }
+
+    .menu-list li strong {
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .menu-note {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 4px;
     }
 
     .gallery {
@@ -263,9 +318,6 @@
     }
 
     .contact-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid var(--border);
-      border-radius: 18px;
       padding: 24px;
     }
 
@@ -291,10 +343,13 @@
 
     @media (max-width: 920px) {
       .hero-grid,
-      .cards,
       .gallery,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        column-count: 1;
       }
 
       .hero-copy { min-height: auto; }
@@ -335,8 +390,8 @@
             Un espacio pensado para disfrutar de platos con sabor de la tierra, grandes comedores y una terraza amplia para compartir en familia, con amigos o en celebraciones.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://wa.me/34636401166" target="_blank" rel="noopener noreferrer">Reservar por WhatsApp</a>
-            <a class="btn btn-secondary" href="tel:+34942808207">Llamar ahora</a>
+            <a class="btn btn-primary" href="#contacto">Reservar / Contactar</a>
+            <a class="btn btn-secondary" href="#carta">Ver carta</a>
           </div>
         </div>
 
@@ -368,39 +423,197 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Platos destacados</div>
-            <h2>Especialidades de la casa</h2>
+            <div class="eyebrow">Carta</div>
+            <h2>Nuestra carta</h2>
           </div>
           <p>
-            Una selección de platos representativos para mostrar claramente la propuesta gastronómica del restaurante.
+            Consulta una selección amplia de platos, menús y bodega de Sidrería Cachopo Las Barricas.
           </p>
         </div>
 
-        <div class="cards">
-          <article class="section-card">
-            <h3>Especialidades</h3>
+        <div class="menu-intro">
+          <p>
+            También puedes abrir la carta completa en PDF con el formato original del restaurante.
+          </p>
+          <div class="menu-actions">
+            <a class="menu-pdf-link" href="docs/carta.pdf" target="_blank" rel="noopener noreferrer">Ver carta en PDF</a>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-block">
+            <h3>Menús</h3>
             <ul class="menu-list">
-              <li><span>Cachopo campeón 2023</span><strong>Especialidad</strong></li>
-              <li><span>Cocido montañés</span><strong>Tradición</strong></li>
-              <li><span>Risotto</span><strong>Destacado</strong></li>
+              <li>
+                <span>
+                  Menú fin de semana
+                  <span class="menu-note">
+                    Primer plato a elegir entre ensaladilla rusa con pulpo y gambas, risotto de marisco, fabada asturiana, puding de pescado, tabla de lacón y pulpo, entremeses fríos y calientes o ensalada de queso de cabra, frutos secos y jamón.
+                  </span>
+                  <span class="menu-note">
+                    Segundo plato a elegir entre cachopín de jamón y queso, carrilleras en salsa, entrecot con patatinas y pimientos, chuletillas de lechazo, pulpo a la plancha con parmentier, chipirones encebollados o merluza rellena en salsa.
+                  </span>
+                  <span class="menu-note">
+                    Bodega: agua, vino y casera. Postre casero o helado.
+                  </span>
+                </span>
+                <strong>30 €</strong>
+              </li>
+
+              <li>
+                <span>
+                  Menú nº1
+                  <span class="menu-note">
+                    Puding de merluza y gambas, croquetas caseras, cachopo para 2 personas, postre casero o helado.
+                  </span>
+                  <span class="menu-note">
+                    Bebida: botella de sidra, de vino o agua. Mínimo 2 personas.
+                  </span>
+                </span>
+                <strong>50 €</strong>
+              </li>
+
+              <li>
+                <span>
+                  Menú nº2
+                  <span class="menu-note">
+                    Tabla de tortos, chorizo a la sidra, cachopo para 2 personas, postre casero o helado.
+                  </span>
+                  <span class="menu-note">
+                    Bebida: botella de sidra, de vino o agua. Mínimo 2 personas.
+                  </span>
+                </span>
+                <strong>56 €</strong>
+              </li>
+
+              <li>
+                <span>
+                  Menú nº3
+                  <span class="menu-note">
+                    Puding de merluza y gambas, chorizo a la sidra, chuletón de 1 kg, postre casero o helado.
+                  </span>
+                  <span class="menu-note">
+                    Bebida: botella de sidra, de vino o agua. Para 2 personas.
+                  </span>
+                </span>
+                <strong>66 €</strong>
+              </li>
+
+              <li>
+                <span>
+                  Menú nº4 · Tabla de cachopos
+                  <span class="menu-note">
+                    Ensalada de queso de cabra y jamón, croquetas caseras, tabla de cachopos y tabla de postres.
+                  </span>
+                  <span class="menu-note">
+                    La tabla de cachopos incluye: cachopo de jamón y queso, cachopo ganador, cachopo de cecina y queso de cabra y cachopo de cecina y queso cabrales.
+                  </span>
+                  <span class="menu-note">
+                    Bebida: 1 botella de Rioja, 1 botella de agua y 1 botella de gaseosa. Para 4 personas.
+                  </span>
+                </span>
+                <strong>130 €</strong>
+              </li>
             </ul>
           </article>
 
-          <article class="section-card">
-            <h3>Estilo de cocina</h3>
+          <article class="menu-block">
+            <h3>Cachopos</h3>
             <ul class="menu-list">
-              <li><span>Comida casera de la región</span><strong>Cantabria</strong></li>
-              <li><span>Cocina abundante y sabrosa</span><strong>Casa</strong></li>
-              <li><span>Platos para compartir</span><strong>Familia</strong></li>
+              <li><span>Cecina y queso de cabra</span><strong>23 €</strong></li>
+              <li><span>Foie y cebolla caramelizada</span><strong>23 €</strong></li>
+              <li><span>Cecina y queso cabrales</span><strong>23 €</strong></li>
+              <li><span>Jamón serrano y queso</span><strong>23 €</strong></li>
+              <li><span>Especial celíacos</span><strong>23 €</strong></li>
+              <li><span>Cachopo campeón de Cantabria</span><strong>25 €</strong></li>
             </ul>
           </article>
 
-          <article class="section-card">
-            <h3>Espacio</h3>
+          <article class="menu-block">
+            <h3>Raciones</h3>
             <ul class="menu-list">
-              <li><span>Terraza grande</span><strong>Exterior</strong></li>
-              <li><span>Comedores amplios</span><strong>Interior</strong></li>
-              <li><span>Ambiente ideal para grupos</span><strong>Reuniones</strong></li>
+              <li><span>Queso de Tresviso</span><strong>12 €</strong></li>
+              <li><span>Tabla de quesos</span><strong>16 €</strong></li>
+              <li><span>Rabas</span><strong>12 €</strong></li>
+              <li><span>Croquetas caseras</span><strong>9,50 €</strong></li>
+              <li><span>Torreznos de Soria</span><strong>12 €</strong></li>
+              <li><span>Chorizo a la sidra</span><strong>10 €</strong></li>
+              <li><span>Puding de merluza y gambas</span><strong>12 €</strong></li>
+              <li><span>Chipirones encebollados</span><strong>14,50 €</strong></li>
+              <li><span>Patatas cabrales o alioli</span><strong>8 €</strong></li>
+              <li><span>Morcilla encebollada</span><strong>10,50 €</strong></li>
+              <li><span>Alitas de pollo</span><strong>10 €</strong></li>
+              <li><span>Albóndigas</span><strong>12 €</strong></li>
+              <li><span>Pan</span><strong>1,40 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Platos de cuchara</h3>
+            <ul class="menu-list">
+              <li><span>Fabada asturiana</span><strong>12 €</strong></li>
+              <li><span>Cocido montañés</span><strong>12 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Ensaladas</h3>
+            <ul class="menu-list">
+              <li><span>Ensalada de ventresca y pimientos</span><strong>13,50 €</strong></li>
+              <li><span>Ensalada de queso de cabra y jamón</span><strong>12 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Sartenucas</h3>
+            <ul class="menu-list">
+              <li><span>Blanco y rojo</span><strong>13 €</strong></li>
+              <li><span>Marea negra</span><strong>13 €</strong></li>
+              <li><span>Del mar</span><strong>13 €</strong></li>
+              <li><span>Redonda</span><strong>13 €</strong></li>
+              <li><span>Montañesa</span><strong>13 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Carnes</h3>
+            <ul class="menu-list">
+              <li><span>Taco sobre crema cabrales</span><strong>17,50 €</strong></li>
+              <li><span>Carrilleras</span><strong>16 €</strong></li>
+              <li><span>Entrecot</span><strong>17 €</strong></li>
+              <li><span>Chuletón</span><strong>40 €/kg</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Pescados y pulpo</h3>
+            <ul class="menu-list">
+              <li><span>Merluza rellena</span><strong>17 €</strong></li>
+              <li><span>Chipirones encebollados</span><strong>14,50 €</strong></li>
+              <li><span>Pulpo a la gallega</span><strong>17 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Pizzas</h3>
+            <ul class="menu-list">
+              <li><span>Pizza York</span><strong>11 €</strong></li>
+              <li><span>Pizza 4 quesos</span><strong>11 €</strong></li>
+            </ul>
+          </article>
+
+          <article class="menu-block">
+            <h3>Bodega</h3>
+            <ul class="menu-list">
+              <li><span>Riojas crianzas</span><strong>14 € - 20 €</strong></li>
+              <li><span>Reservas</span><strong>20 € - 26 €</strong></li>
+              <li><span>Riberas del Duero</span><strong>15 € - 18 €</strong></li>
+              <li><span>Blancos</span><strong>12 € - 14 €</strong></li>
+              <li><span>Rosados</span><strong>12 €</strong></li>
+              <li><span>Sidra Viuda de Angelón</span><strong>4,50 €</strong></li>
+              <li><span>Jarra de sangría de vino</span><strong>13 €</strong></li>
+              <li><span>Jarra de sangría de sidra</span><strong>13 €</strong></li>
+              <li><span>Jarra de cerveza</span><strong>13 €</strong></li>
             </ul>
           </article>
         </div>
@@ -455,7 +668,7 @@
             </p>
             <p>
               <strong>WhatsApp:</strong>
-              <a href="https://wa.me/34636401166" target="_blank" rel="noopener noreferrer">636 40 11 66</a>
+              <a href="https://wa.me/34670432639" target="_blank" rel="noopener noreferrer">670 43 26 39</a>
             </p>
             <p><strong>Horario:</strong> Jueves 12:00–17:00 · Viernes a lunes 12:00–23:30 · Martes y miércoles cerrado</p>
           </div>
@@ -465,7 +678,7 @@
             <p>Canales disponibles:</p>
             <div class="social">
               <a href="tel:+34942808207">Llamar</a>
-              <a href="https://wa.me/34636401166" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href="https://wa.me/34670432639" target="_blank" rel="noopener noreferrer">WhatsApp</a>
               <a href="https://www.instagram.com/sidreriacachopolasbarricas" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="https://www.google.com/maps/search/?api=1&query=C.+Cam.+Real,+34,+39311+Cartes,+Cantabria" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
             </div>
